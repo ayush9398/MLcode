@@ -22,10 +22,14 @@ sigma = 0.3;
 %  Note: You can compute the prediction error using 
 %        mean(double(predictions ~= yval))
 %
-
-
-
-
+C_vals=[0.01;0.03;0.1;0.3;1;3;10;30];
+for i=1:length(C_vals),
+  C=C_vals(i);
+  for j=1:length(C_vals),
+    sssigma=C_vals(j);
+    cost=C*sum(y);
+  end;
+end;
 
 
 
