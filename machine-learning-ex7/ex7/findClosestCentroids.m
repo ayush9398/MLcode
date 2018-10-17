@@ -21,11 +21,23 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i=1:length(X),
+  dist=0;
+  for l=1:size(centroids,2),
+      dist=dist+((X(i,l)-centroids(1,l))^2);
+  end;
+  idx(i)=1;
+  for j=2:size(centroids,1),
+    dist1=0;
+    for l=1:size(centroids,2),
+      dist1=dist1+((X(i,l)-centroids(j,l))^2);
+    end;
+    if (dist1<dist),
+      dist=dist1;
+      idx(i)=j;
+    end;
+  end;
+end;
 
 % =============================================================
 

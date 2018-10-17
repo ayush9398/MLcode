@@ -27,12 +27,13 @@ centroids = zeros(K, n);
 %
 
 
-
-
-
-
-
-
+countk=zeros(K,1);
+sumk=zeros(K,n);
+for i=1:m,
+  sumk(idx(i),:)=sumk(idx(i),:)+X(i,:);
+  countk(idx(i))=countk(idx(i))+1;
+end;
+centroids=sumk./countk;
 % =============================================================
 
 
