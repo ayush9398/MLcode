@@ -51,9 +51,25 @@ end;
 
 J=J/2;
 
+for i=1:num_movies,
+  for j=1:num_users,
+    for k=1:num_features,
+    if (R(i,j)==1),
+      X_grad(i,k)+=(((X(i,:)*(Theta(j,:))')-Y(i,j))*Theta(j,k));
+    end;
+    end;
+end;
+end;
 
-
-
+for i=1:num_movies,
+  for j=1:num_users,
+    for k=1:num_features,
+    if (R(i,j)==1),
+      Theta_grad(j,k)+=(((X(i,:)*(Theta(j,:))')-Y(i,j))*X(i,k));
+    end;
+    end;
+end;
+end;
 
 
 
