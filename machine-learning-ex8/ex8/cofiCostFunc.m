@@ -47,8 +47,10 @@ for i=1:num_movies,
     end;
 end;
 end;
-J+=lambda*(sum(sum(Theta.^2))+sum(sum(X.^2)));
 
+Theta2=Theta.^2;
+X2=X.^2;
+J+=lambda*(sum(sum(Theta2))+sum(sum(X2)));
 J=J/2;
 
 for i=1:num_movies,
@@ -62,6 +64,12 @@ end;
 end;
 
 for i=1:num_movies,
+   for k=1:num_features,
+      X_grad(i,k)+=lambda*X(i,k);
+   end;
+end;
+
+for i=1:num_movies,
   for j=1:num_users,
     for k=1:num_features,
     if (R(i,j)==1),
@@ -72,6 +80,14 @@ end;
 end;
 
 
+
+for j=1:num_users,
+  for k=1:num_features,
+    Theta_grad(j,k)+=lambda*Theta(j,k);
+  end;
+end;
+
+%
 
 
 % =============================================================
