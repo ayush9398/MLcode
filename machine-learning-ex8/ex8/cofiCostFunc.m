@@ -47,7 +47,7 @@ for i=1:num_movies,
     end;
 end;
 end;
-
+J+=lambda*(sum(sum(Theta.^2))+sum(sum(X.^2)));
 
 J=J/2;
 
